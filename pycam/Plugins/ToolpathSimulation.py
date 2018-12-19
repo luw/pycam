@@ -26,8 +26,8 @@ import pycam.Plugins
 class ToolpathSimulation(pycam.Plugins.PluginBase):
 
     UI_FILE = "toolpath_simulation.ui"
-    DEPENDS = ["Toolpaths", "OpenGLViewToolpath"]
-    CATEGORIES = ["Toolpath"]
+    DEPENDS = {"Toolpaths", "VisualizeToolpath"}
+    CATEGORIES = {"Toolpath"}
 
     def setup(self):
         self._running = None
@@ -62,7 +62,6 @@ class ToolpathSimulation(pycam.Plugins.PluginBase):
         if self.gui:
             del self.core["show_simulation"]
             self.core.unregister_ui("toolpath_handling", self._frame)
-            self.core.unregister_event("visualize-items", self.show_simulation)
             self.unregister_event_handlers(self._event_handlers)
             self.unregister_gtk_handlers(self._gtk_handlers)
 
